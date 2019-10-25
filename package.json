@@ -1,0 +1,26 @@
+{
+  "name": "parse-server-codecraft",
+  "version": "1.4.0",
+  "description": "An example Parse API server using the parse-server module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codrin89/ac_pearl"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "~4.11.x",
+    "node-gyp": "^6.0.0",
+    "parse": "~1.8.0",
+    "parse-server": "~2.2.12",
+    "bcrypt": ">=3.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "9.11.2",
+    "npm": "6.4.0"
+  }
+}
