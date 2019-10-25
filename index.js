@@ -1,6 +1,5 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
-var S3Adapter = require('parse-server').S3Adapter;
 var path = require('path');
 var bodyParser = require('body-parser');
 
@@ -62,6 +61,11 @@ app.get('/test', function (req, res) {
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '/public/templates/index.html'));
+});
+
+app.get('/upload', function (req, res) {
+	const {body} = req;
+	res.status(200).send(JSON.stringify(body));
 });
 
 
