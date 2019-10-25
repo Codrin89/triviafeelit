@@ -16,8 +16,8 @@ var api = new ParseServer({
 	
 	//**** Security Settings ****//
 	// allowClientClassCreation: process.env.CLIENT_CLASS_CREATION || false, 
-	appId: 'myAppId',
-	masterKey: 'myMasterKey', //Add your master key here. Keep it secret!
+	appId: 'feelittrivia',
+	masterKey: 'feelittrivia', //Add your master key here. Keep it secret!
 	//**** Email Verification ****//
 	/* Enable email verification */
 	// verifyUserEmails: true,
