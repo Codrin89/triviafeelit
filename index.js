@@ -13,7 +13,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var api = new ParseServer({
 	//**** General Settings ****//
 	databaseURI: databaseUri || 'mongodb://localhost:27017/parse_demo',
-	cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
 	serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
 	
 	//**** Security Settings ****//
