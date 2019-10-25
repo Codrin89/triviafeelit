@@ -58,71 +58,14 @@ app.use(mountPath, api);
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
 app.get('/test', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/test.html'));
+	res.status(200).send('success');
 });
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '/public/templates/index.html'));
 });
 
-app.get('/search', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/templates/search.html'));
-});
 
-app.get('/listings/:id', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/ListingsUI.html'));
-});
-
-app.get('/admin/listings/add', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/ListingsPost.html'));
-});
-
-app.get('/admin/listings/view', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/ListingsView.html'));
-});
-
-app.get('/admin/listings/photos/:id', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/ListingsViewExtended.html'));
-});
-
-app.get('/admin/listings/calendar/:id', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/ListingCalendar.html'));
-});
-
-app.get('/holiday_apartaments', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/templates/holidayApartaments.html'));
-});
-
-app.post('/admin/listings/uploadMedia', async (req, res) => {
-	const {uploadedPhoto, objectId, groupName} = req.body;
-	if(!uploadedPhoto || !objectId || !groupName) {
-		res.status(400).send({response: 'Incomplete data'});
-	}
-	const Listings = new Parse.Object.extend('Listings');
-	const query = new Parse.Query(Listings);
-	query.equalTo("objectId", objectId);
-	query.first().then(listings => {
-		let photosData = listings.get('photos');
-		if(!photosData) {
-			photosData = {};
-			photosData[groupName] = [];
-		} else if(!photosData[groupName]) {
-			photosData[groupName] = [];
-		}
-		for(let i = 0; i < uploadedPhoto.length; i++) {
-			photosData[groupName].push(uploadedPhoto[i]);
-		}
-		listings.save().then(response => {
-			res.status(200).send(response);
-		}, error => {
-			res.status(400).send({response: 'Could not save data'});
-		});
-	}, error => {
-		console.log(error);
-		res.status(400).send({response: 'Could not retrive data'});
-	});
-	
-});
 
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
