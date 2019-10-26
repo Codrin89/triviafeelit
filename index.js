@@ -60,7 +60,11 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '/public/templates/index.html'));
+	res.sendFile(path.join(__dirname, '/public/templates/view.html'));
+});
+
+app.get('/list', function (req, res) {
+	res.sendFile(path.join(__dirname, '/public/templates/view.html'));
 });
 
 app.get('/upload', function (req, res) {
