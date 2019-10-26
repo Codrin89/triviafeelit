@@ -64,8 +64,19 @@ app.get('/', function (req, res) {
 });
 
 app.get('/upload', function (req, res) {
-	const {body} = req;
-	res.status(200).send(JSON.stringify(body));
+	var Questions = Parse.Object.extend("Questions");
+	var query = new Parse.Query(Questions);
+
+	query.limit(200);
+	query.find().then((response)=>{
+	//   console.log(response)
+		let randQuest = response.map((q) => {
+			return q.set('rnd', Math.floor(Math.random() * Math.floor(10000)));
+		}).sort((a,b)=>{return a.get('rnd') - b.get('rnd');}).slice(0, 10);
+	
+	
+	randQuest.map((o)=>{console.log(o.get('question'));});
+	return randQuest;
 });
 
 
