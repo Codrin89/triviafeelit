@@ -76,7 +76,7 @@ app.get('/upload', function (req, res) {
 	
 	
 	randQuest.map((o)=>{console.log(o.get('question'));});
-	return randQuest;
+	res.status(200).send(randQuest);
 });
 
 
