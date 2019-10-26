@@ -69,14 +69,17 @@ app.get('/upload', function (req, res) {
 
 	query.limit(200);
 	query.find().then((response)=>{
-	//   console.log(response)
-		let randQuest = response.map((q) => {
-			return q.set('rnd', Math.floor(Math.random() * Math.floor(10000)));
-		}).sort((a,b)=>{return a.get('rnd') - b.get('rnd');}).slice(0, 10);
-	
-		randQuest.map((o)=>{console.log(o.get('question'));
-		res.status(200).send(randQuest);
-	});
+		//   console.log(response)
+			let randQuest = response.map((q) => {
+				return q.set('rnd', Math.floor(Math.random() * Math.floor(10000)));
+			}).sort((a,b)=>{return a.get('rnd') - b.get('rnd');}).slice(0, 10);
+		
+			randQuest.map((o)=>{console.log(o.get('question'));
+			res.status(200).send(randQuest);
+		},(error)=>{
+			
+			res.status(400).send('fail');
+		});
 	
 });
 
