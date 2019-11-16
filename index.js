@@ -12,7 +12,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var api = new ParseServer({
 	//**** General Settings ****//
 	databaseURI: databaseUri || 'mongodb://localhost:27017/parse_demo',
-	serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+	serverURL: process.env.SERVER_URL || 'https://feelittrivia.herokuapp.com/parse',  // Don't forget to change to https if needed
 	
 	//**** Security Settings ****//
 	// allowClientClassCreation: process.env.CLIENT_CLASS_CREATION || false, 
@@ -26,7 +26,7 @@ var api = new ParseServer({
 	/* Set the mount path as it is in serverURL */
 	// publicServerURL: 'http://localhost:1337/parse',
 	/* This will appear in the subject and body of the emails that are sent */
-	appName: process.env.APP_NAME || "AcPearlHoliday", 
+	appName: process.env.APP_NAME || "feelittrivia", 
 	// emailAdapter: {
 	// 	module: 'parse-server-simple-mailgun-adapter',
 	// 	options: {

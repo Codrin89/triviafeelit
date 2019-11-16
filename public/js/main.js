@@ -86,8 +86,8 @@ document.getElementById('button-submit').addEventListener('click', function() {
         phone: document.getElementById('phone').value
     };
     document.getElementById('name-info').innerHTML = createUser.name;
-    document.getElementById('email-info').innerHTML = createUser.name;
-    document.getElementById('phone-info').innerHTML = createUser.name;
+    document.getElementById('email-info').innerHTML = createUser.email;
+    document.getElementById('phone-info').innerHTML = createUser.phone;
     ParseRequest.postData(createUser);
 });
 
@@ -120,7 +120,6 @@ function initEvents() {
                 score++;
                 answerActive.classList.add('true');
             } else {
-                debugger;
                 answerActive.classList.add('false');
                 const cards = document.querySelectorAll('.card-answer');
                 for(let i = 0; i < cards.length; i++) {
@@ -163,8 +162,9 @@ function finishGame() {
         score: score
     };
     document.getElementById('score-info').innerHTML = score + ' / 10' ;
-    document.getElementById('email-info').innerHTML = createUser.name;
-    document.getElementById('phone-info').innerHTML = createUser.name;
+    document.getElementById('name-info').innerHTML = createUser.name;
+    document.getElementById('email-info').innerHTML = createUser.email;
+    document.getElementById('phone-info').innerHTML = createUser.phone;
     ParseRequest.postDataResult(createUser);
     document.getElementById('game2').classList.remove('show');
     document.getElementById('game3').classList.add('show');
